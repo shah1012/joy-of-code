@@ -34,87 +34,75 @@ export function NavigationSidebar() {
 
   return (
     <>
-      <Box
-        as="nav"
-        bg={sidebarBackground}
-        boxShadow="md"
-        display={{ base: 'none', md: 'block' }}
-        h="100vh"
-        left={0}
-        maxW="80px"
-        minW="80px"
-        pos="fixed"
-        top={0}
-        zIndex={3}
-      >
-        <List alignItems="center" d="flex" flexDir="column" h="100%">
-          <ListItem my={8}>
+      <nav className="hidden md:block bg-primary w-[80px] fixed z-10 top-0 left-0 h-full shadow-md">
+        <ul className="flex flex-col items-center h-full">
+          <li className="my-8">
             <CustomLink color={primaryColor} href="/" isInternal>
-              <VisuallyHidden>Home</VisuallyHidden>
+              <span className="sr-only">Home</span>
               <Delight>
                 <Icon icon="paintBrush" />
               </Delight>
             </CustomLink>
-          </ListItem>
+          </li>
 
-          <ListItem mt={8}>
+          <li className="mt-8">
             <CustomLink
               color={mutedColor}
               hover={hoverStyle}
               href="/javascript"
               isInternal
             >
-              <VisuallyHidden>JavaScript</VisuallyHidden>
+              <span className="sr-only">JavaScript</span>
               <Delight>
                 <Icon icon="javascript" />
               </Delight>
             </CustomLink>
-          </ListItem>
+          </li>
 
-          <ListItem mt={8}>
+          <li className="mt-8">
             <CustomLink
               color={mutedColor}
               hover={hoverStyle}
               href="/react"
               isInternal
             >
-              <VisuallyHidden>React</VisuallyHidden>
+              <span className="sr-only">React</span>
               <Delight>
                 <Icon icon="react" />
               </Delight>
             </CustomLink>
-          </ListItem>
+          </li>
 
-          <ListItem mt={8}>
+          <li className="mt-8">
             <CustomLink
               color={mutedColor}
               hover={hoverStyle}
               href="/css"
               isInternal
             >
-              <VisuallyHidden>CSS</VisuallyHidden>
+              <span className="sr-only">CSS</span>
               <Delight>
                 <Icon icon="swatch" />
               </Delight>
             </CustomLink>
-          </ListItem>
+          </li>
 
-          <ListItem mt={8}>
+          <li className="mt-8">
             <CustomLink
               color={mutedColor}
               hover={hoverStyle}
               href="/general"
               isInternal
             >
-              <VisuallyHidden>General</VisuallyHidden>
+              <span className="sr-only">General</span>
               <Delight>
                 <Icon icon="bulb" />
               </Delight>
             </CustomLink>
-          </ListItem>
+          </li>
 
-          <ListItem color={mutedColor} mt={8} pos="relative">
-            <VisuallyHidden>More</VisuallyHidden>
+          {/* <li className="relative mt-8 text-muted">
+            <span className="sr-only">More</span>
             <MotionBox
               _focus={{
                 boxShadow: 'var(--chakra-shadows-outline)',
@@ -320,9 +308,9 @@ export function NavigationSidebar() {
                 </Box>
               </MotionBox>
             </MotionBox>
-          </ListItem>
-        </List>
-      </Box>
+          </li> */}
+        </ul>
+      </nav>
     </>
   )
 }

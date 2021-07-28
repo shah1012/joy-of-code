@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --highlight: #fbd38d;
+  --muted: #a0aec0;
+  --primary: #1a202c;
+  --secondary: #2d3748;
+  --body: #cbd5e0;
+  --highlightText: #652b19;
+  --sans: 'Inter, sans-serif';
+  --mono: 'Mononoki, monospace';
+  --openDyslexic: 'OpenDyslexic, sans-serif';
+  --openDyslexicMono: 'OpenDyslexic Mono, monospace';
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700 900;
+    font-display: swap;
+    src: url('/fonts/inter/Inter-Variable.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Mononoki';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/mononoki/mononoki-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Mononoki';
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/mononoki/mononoki-Bold.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'OpenDyslexic';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/openDyslexic/OpenDyslexic-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'OpenDyslexic Mono';
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/openDyslexic/OpenDyslexic-Bold.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'OpenDyslexic';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/openDyslexic/OpenDyslexicMono-Regular.woff2')
+      format('woff2');
+  }
+
+  ::selection {
+    @apply bg-highlight text-highlightText;
+  }
+
+  html {
+    height: 100%;
+    cursor: url('/images/cursor-default.webp'), default;
+    scrollbarcolor: theme('colors.highlight') transparent;
+    scrollbar-color: theme('colors.highlight') transparent;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scroll-padding-top: theme('space.8'); /* todo */
+    scroll-padding-top: 1rem;
+  }
+
+  body {
+    @apply h-full overflow-x-hidden font-sans bg-primary;
+  }
+
+  h1 {
+    @apply text-3xl font-black text-muted md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-muted md:text-3xl lg:text-4xl;
+  }
+
+  p {
+    @apply text-lg leading-relaxed md:text-xl text-body;
+  }
+
+  a,
+  button {
+    cursor: url('/images/cursor-pointer.webp'), pointer;
+  }
+
+  ::-webkit-scrollbar {
+    /* width: 6px; */
+    @apply w-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-highlight; /* todo */
+  }
+
+  code {
+    @apply p-1 font-mono bg-secondary text-body;
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    @apply p-0 leading-relaxed bg-transparent text-primary;
+  }
+
+  .remark-code-title {
+    /* todo: z-index might be problematic */
+    @apply relative z-0 p-4 font-mono font-bold rounded-lg shadow-lg w-max top-1 bg-highlight text-primary;
+  }
+
+  /* todo: turn these into css variables? */
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    /* color: ${chakraTheme.colors.gray[400]}; */
+    @apply text-gray-400;
+  }
+
+  .token.punctuation {
+    /* color: ${useColorModeValue(
+      chakraTheme.colors.blue[400],
+      chakraTheme.colors.blue[100]
+    )}; */
+    @apply text-blue-100;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    /* color: ${chakraTheme.colors.red[400]}; */
+    @apply text-red-400;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    /* color: ${useColorModeValue(
+      chakraTheme.colors.red[500],
+      chakraTheme.colors.red[200]
+    )}; */
+    @apply text-red-200;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    /* color: ${useColorModeValue(
+      chakraTheme.colors.red[500],
+      chakraTheme.colors.red[200]
+    )}; */
+    @apply text-red-200;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    /* color: ${useColorModeValue(
+      chakraTheme.colors.orange[500],
+      chakraTheme.colors.orange[200]
+    )}; */
+    @apply text-yellow-500;
+  }
+
+  .token.function,
+  .token.class-name {
+    /* color: ${useColorModeValue(
+      chakraTheme.colors.blue[500],
+      chakraTheme.colors.blue[200]
+    )}; */
+    @apply text-blue-500;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    /* color: ${chakraTheme.colors.orange[300]}; */
+    @apply text-yellow-500;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px hsla(0, 0%, 0%, 100%);
+  }
+}
