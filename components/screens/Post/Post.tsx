@@ -1,8 +1,8 @@
 import { MDXComponents } from '@/root/components/mdx/MDXComponents'
 import { MDXRemote } from 'next-mdx-remote'
+import { motion } from 'framer-motion'
 
 import { Layout } from '@/root/components/shared/Layout'
-import { MotionBox } from '@/root/components/shared/MotionBox'
 import { Newsletter } from '@/root/components/shared/Newsletter'
 import { PostCredits } from '@/root/components/mdx/PostCredits'
 
@@ -39,19 +39,18 @@ export function Post({ content, frontMatter }: PostProps) {
       title={frontMatter.title}
       type="article"
     >
-      <MotionBox
+      <motion.div
         animate="show"
+        className="mx-auto max-w-[80ch]"
         initial="hidden"
-        maxW="80ch"
-        mx="auto"
         variants={postVariants}
       >
-        <div className="mdx-prose">
+        <div className="prose">
           <MDXRemote {...content} components={MDXComponents} />
         </div>
         <Newsletter />
         <PostCredits />
-      </MotionBox>
+      </motion.div>
     </Layout>
   )
 }

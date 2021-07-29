@@ -69,6 +69,18 @@
     @apply bg-highlight text-highlightText;
   }
 
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-highlight;
+  }
+
   html {
     height: 100%;
     cursor: url('/images/cursor-default.webp'), default;
@@ -76,8 +88,7 @@
     scrollbar-color: theme('colors.highlight') transparent;
     scrollbar-width: thin;
     scroll-behavior: smooth;
-    scroll-padding-top: theme('space.8'); /* todo */
-    scroll-padding-top: 1rem;
+    scroll-padding-top: theme('space.8');
   }
 
   body {
@@ -93,7 +104,7 @@
   }
 
   p {
-    @apply text-lg leading-relaxed md:text-xl text-body;
+    @apply text-lg leading-loose md:text-xl text-body;
   }
 
   a,
@@ -101,31 +112,56 @@
     cursor: url('/images/cursor-pointer.webp'), pointer;
   }
 
-  ::-webkit-scrollbar {
-    /* width: 6px; */
-    @apply w-1;
+  .prose {
+    @apply text-body;
   }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-none;
+  .prose h1 {
+    @apply max-w-xl pb-4 mx-auto mb-4 border-b border-gray-700 md:pb-8 lg:text-6xl md:mb-8 lg:mb-8 md:text-center;
   }
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-highlight; /* todo */
+  .prose h2 {
+    @apply mt-16 text-highlight;
+  }
+
+  .prose p {
+    @apply my-8 leading-loose;
+  }
+
+  .prose a {
+    @apply text-highlight hover:underline;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply mt-8 space-y-8 text-lg md:text-xl;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside;
+  }
+
+  .prose blockquote {
+    @apply px-8 py-2 my-8 border-l-4 bg-secondary border-primary;
   }
 
   code {
+    /* todo: what does this do? 🧐 */
+    /* todo: move pre styles from CodeBlock to here */
     @apply p-1 font-mono bg-secondary text-body;
   }
 
   code[class*='language-'],
   pre[class*='language-'] {
-    @apply p-0 leading-relaxed bg-transparent text-primary;
+    @apply p-0 leading-relaxed text-white bg-transparent;
   }
 
   .remark-code-title {
-    /* todo: z-index might be problematic */
-    @apply relative z-0 p-4 font-mono font-bold rounded-lg shadow-lg w-max top-1 bg-highlight text-primary;
+    @apply relative p-4 font-mono font-bold rounded-lg shadow-lg -z-10 w-max top-1 bg-highlight text-primary;
   }
 
   /* todo: turn these into css variables? */
@@ -189,7 +225,7 @@
       chakraTheme.colors.orange[500],
       chakraTheme.colors.orange[200]
     )}; */
-    @apply text-yellow-500;
+    @apply text-yellow-200;
   }
 
   .token.function,
@@ -198,7 +234,7 @@
       chakraTheme.colors.blue[500],
       chakraTheme.colors.blue[200]
     )}; */
-    @apply text-blue-500;
+    @apply text-blue-200;
   }
 
   .token.regex,
