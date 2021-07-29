@@ -21,6 +21,9 @@ module.exports = {
       gridTemplateColumns: {
         cards: 'repeat(auto-fill, minmax(auto, 420px))',
       },
+      zIndex: {
+        '-10': '-10',
+      },
     },
   },
   variants: {
