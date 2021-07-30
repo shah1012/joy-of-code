@@ -5,7 +5,7 @@ interface CodeBlockProps {
   children: ReactNode
 }
 
-export function CodeBlock({ children, ...props }: CodeBlockProps) {
+export function CodeBlock({ children }: CodeBlockProps) {
   const [isCopied, setIsCopied] = useState<boolean>(false)
   const preEl = useRef<HTMLInputElement>(null)
 
@@ -47,22 +47,20 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
   }
 
   return (
-    <div className="relative mb-8 -mx-4 sm:-mx-8" {...props}>
-      <div className="absolute z-10 right-4 -top-9">
-        <div className="absolute right-10">
+    <div className="relative mb-8 -mx-4 sm:-mx-8">
+      <div className="absolute right-4 -top-9">
+        <div className="absolute z-30 right-10">
           <Confetti active={isCopied} config={config} />
         </div>
-        <button className="select-none bg-[#2c323d]" onClick={copyToClipboard}>
-          {isCopied ? '🎉 Copied!' : '📋 Copy'}
+        <button
+          className="px-4 py-2 bg-secondary rounded-tl-md rounded-tr-md"
+          onClick={copyToClipboard}
+        >
+          {isCopied ? '🎉 Copied' : '📋'}
         </button>
       </div>
 
-      <pre
-        ref={preEl}
-        className="relative z-20 p-6 overflow-auto rounded-md shadow-lg bg-[#1f2735] md:text-lg"
-      >
-        {children}
-      </pre>
+      <pre ref={preEl}>{children}</pre>
     </div>
   )
 }

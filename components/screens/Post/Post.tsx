@@ -48,7 +48,9 @@ export function Post({ content, frontMatter }: PostProps) {
         <div className="prose">
           <MDXRemote {...content} components={MDXComponents} />
         </div>
-        <Newsletter />
+        <div className="my-16">
+          <Newsletter />
+        </div>
         <PostCredits />
       </motion.div>
     </Layout>

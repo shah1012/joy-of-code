@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  preBg: #1f2735
+  tokenKeyword: text-highlight
+  tokenPunctuation: text-blue-200
+  tokenString: text-red-400
+  tokenOperator: text-red-300
+  tokenFunction: text-blue-300
+  text: white
+*/
+
 :root {
   --highlight: #fbd38d;
   --muted: #a0aec0;
@@ -129,12 +139,12 @@
   }
 
   .prose a {
-    @apply text-highlight hover:underline;
+    @apply relative before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-highlight before:scale-x-0 before:transition-transform hover:before:scale-x-100 text-highlight before:origin-left;
   }
 
   .prose ul,
   .prose ol {
-    @apply mt-8 space-y-8 text-lg md:text-xl;
+    @apply my-8 space-y-4 text-lg md:text-xl md:leading-loose;
   }
 
   .prose ul {
@@ -146,13 +156,19 @@
   }
 
   .prose blockquote {
-    @apply px-8 py-2 my-8 border-l-4 bg-secondary border-primary;
+    @apply px-8 py-2 my-8 border-l-4 bg-secondary border-highlight;
+  }
+
+  kbd {
+    @apply p-1 font-mono border border-b-[3px] rounded-md bg-primary text-body border-gray-700 text-white;
   }
 
   code {
-    /* todo: what does this do? 🧐 */
-    /* todo: move pre styles from CodeBlock to here */
-    @apply p-1 font-mono bg-secondary text-body;
+    @apply p-1 font-mono text-white rounded-md bg-secondary;
+  }
+
+  pre {
+    @apply relative z-20 p-6 overflow-auto rounded-md shadow-lg bg-[#1f2735] md:text-lg;
   }
 
   code[class*='language-'],
@@ -161,10 +177,8 @@
   }
 
   .remark-code-title {
-    @apply relative p-4 font-mono font-bold rounded-lg shadow-lg -z-10 w-max top-1 bg-highlight text-primary;
+    @apply relative px-4 py-2 font-mono font-bold shadow-lg rounded-tl-md rounded-tr-md -z-10 w-max bg-highlight text-primary;
   }
-
-  /* todo: turn these into css variables? */
 
   .token.comment,
   .token.prolog,
@@ -179,7 +193,7 @@
       chakraTheme.colors.blue[400],
       chakraTheme.colors.blue[100]
     )}; */
-    @apply text-blue-100;
+    @apply text-blue-200;
   }
 
   .token.property,
@@ -203,7 +217,7 @@
       chakraTheme.colors.red[500],
       chakraTheme.colors.red[200]
     )}; */
-    @apply text-red-200;
+    @apply text-red-300;
   }
 
   .token.operator,
@@ -215,7 +229,7 @@
       chakraTheme.colors.red[500],
       chakraTheme.colors.red[200]
     )}; */
-    @apply text-red-200;
+    @apply text-red-300;
   }
 
   .token.atrule,
@@ -225,7 +239,7 @@
       chakraTheme.colors.orange[500],
       chakraTheme.colors.orange[200]
     )}; */
-    @apply text-yellow-200;
+    @apply text-highlight;
   }
 
   .token.function,
@@ -234,14 +248,14 @@
       chakraTheme.colors.blue[500],
       chakraTheme.colors.blue[200]
     )}; */
-    @apply text-blue-200;
+    @apply text-blue-300;
   }
 
   .token.regex,
   .token.important,
   .token.variable {
     /* color: ${chakraTheme.colors.orange[300]}; */
-    @apply text-yellow-500;
+    @apply text-highlight;
   }
 }
 
